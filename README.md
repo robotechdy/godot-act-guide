@@ -5,7 +5,7 @@
 
 ## 开始
 
-使用 Godot 标准版 **4.7 stable**，精确版本见 [.godot-version](.godot-version)。本机已有该版本，因此初始化没有升级引擎。
+使用 Godot 标准版 **4.7.2 stable**，精确版本见 [.godot-version](.godot-version)。本机通过 godotenv 安装并设为默认版本。
 
 ```bash
 just check
@@ -30,7 +30,7 @@ F5 运行课程目录；进入章节后，底部 Reset 重新创建当前章节�
 
 ## 初始化验证
 
-2026-11-07 使用上述 Godot 版本完成导入、headless 行为检查，以及 Apple M4 / Compatibility 的图形运行与画面检查。
+2026-11-07 使用 Godot 4.7 stable 完成导入、headless 行为检查，以及 Apple M4 / Compatibility 的图形运行与画面检查。
 验证了节点身份与生命周期、移出节点的清理、两个计数器的状态隔离、信号更新、章节重置与独立加载。
 检查通过临时脚本触发按钮完成；未将验证脚本或测试框架加入课程工程。
 
