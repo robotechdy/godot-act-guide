@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://game/main/main.gd" id="1_main"]
+
+[ext_resource type="Script" path="res://game/main/project_entry.gd" id="2_entry"]
+[ext_resource type="PackedScene" path="res://game/tutorials/01_scene_tree/chapter.tscn" id="3_chapter"]
+[ext_resource type="PackedScene" path="res://game/tutorials/02_scripts_and_composition/chapter.tscn" id="4_chapter"]
+
+[sub_resource type="Resource" id="Entry_01"]
+script = ExtResource("2_entry")
+title = "01 / Scene tree, instances and lifetime"
+summary = "PackedScene > instantiate > enter tree > detach > reattach > destroy. Observe object identity and callbacks."
+scene = ExtResource("3_chapter")
+
+[sub_resource type="Resource" id="Entry_02"]
+script = ExtResource("2_entry")
+title = "02 / Scripts, instances and node composition"
+summary = "One script resource, two independent counters. Separate state from presentation with child nodes and signals."
+scene = ExtResource("4_chapter")
+
+[node name="Main" type="Node"]
+script = ExtResource("1_main")
+entries = Array[ExtResource("2_entry")]([SubResource("Entry_01"), SubResource("Entry_02")])
+
+[node name="Content" type="Node" parent="."]
+
+[node name="Navigation" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Menu" type="PanelContainer" parent="Navigation"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Navigation/Menu"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Items" type="VBoxContainer" parent="Navigation/Menu/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Navigation/Menu/Scroll/Items"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Godot ACT Guide / Unity to Godot"
+
+[node name="Toolbar" type="PanelContainer" parent="Navigation"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Buttons" type="HBoxContainer" parent="Navigation/Toolbar"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Home" type="Button" parent="Navigation/Toolbar/Buttons"]
+layout_mode = 2
+text = "Back to list"
+
+[node name="Reset" type="Button" parent="Navigation/Toolbar/Buttons"]
+layout_mode = 2
+text = "Reset"
+
+[node name="Heading" type="Label" parent="Navigation/Toolbar/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ""
+
+[node name="CoursePlan" type="Label" parent="Navigation/Menu/Scroll/Items"]
+layout_mode = 2
+text = "Start with the engine model, then build toward 3D action games.
+Course plan: index.md | Chapters 01-02 are runnable; 03-24 are planned.
+Each chapter also runs independently with F6 in the editor."
+autowrap_mode = 3
