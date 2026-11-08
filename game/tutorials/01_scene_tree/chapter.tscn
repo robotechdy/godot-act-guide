@@ -79,8 +79,8 @@ selection_enabled = true
 
 [node name="Hint" type="Label" parent="Margin/Rows"]
 layout_mode = 2
-text = "Open the editor's Remote tree to inspect the real objects. Actor is intentionally a data-only subtree here.
-F6 runs this chapter alone; F5 runs it below the course launcher. Read this chapter's README for the exercise."
+text = "Start from the editor: Scene > Remote shows runtime nodes; Local shows the edited scene. Actor has no visible model.
+Run Current Scene runs the selected scene tab; select this chapter.tscn first. Run Project opens the course launcher."
 autowrap_mode = 3
 
 [node name="Instances" type="Node" parent="."]

@@ -5,15 +5,19 @@
 
 ## 操作与预期结果
 
-打开 [chapter.tscn](chapter.tscn) 按 F6，或从课程目录进入本章。
+在编辑器打开并选中本章的 [chapter.tscn](chapter.tscn)，点右上 **Run Current Scene**（默认 F6）；
+也可以点 **Run Project**（默认 F5），从课程目录进入本章。按钮与布局说明见 [项目 README](../../../README.md#从编辑器运行与观察)。
 
 1. 两个计数器初始都为 0。点击 A 的 **+1** 三次，应得到 A=3、B=0。
 2. 点击 B 的 **+1** 一次，再点 A 的 **Reset this counter**，应得到 A=0、B=1。
 3. 观察身份说明：`Same counter.gd resource: true`，但 `Same Node instance: false`，两份 State 的 ID 也不同。
-4. 打开 [counter.tscn](counter.tscn)，根 PanelContainer 使用 `counter.gd`，State 子 Node 使用 `counter_state.gd`。
-5. 运行后到 Remote 查看 A/State 和 B/State 的 `value`；对照 UI 的数值。
+4. 保持游戏运行，在编辑器打开 [counter.tscn](counter.tscn)，切到 **Scene → Local** 检查：根 PanelContainer 使用 `counter.gd`，State 子 Node 使用 `counter_state.gd`。这是源场景，顶部切换到它不会重启正在运行的教程。
+5. 切到 **Scene → Remote**，在运行中的 `Chapter/Margin/Rows/Counters` 下查看 `A/State` 和 `B/State` 的 `value`，对照运行 UI 的数值；不要把 Local 源场景中的 State 当成 A 或 B。
 
-从课程入口运行时，底部 **Reset** 重新实例化本章，A、B 都回到 0；F6 时停止再运行即可。
+Script 工作区的文档列表跨场景共享。查看 `counter.gd` 或 `counter_state.gd` 不代表顶部已选中对应场景；
+下次独立运行本章前，仍要选回本章的 `chapter.tscn`，再点 **Run Current Scene**。
+
+从课程入口运行时，底部 **Reset** 重新实例化本章，A、B 都回到 0；独立运行时停止再运行即可。
 
 ## 原理与代码
 
@@ -39,7 +43,7 @@ Counter (PanelContainer + counter.gd)     负责显示与连接
 ## 小练习
 
 在 State 增加 `decrement()`，再给 Counter 增加 **-1** 按钮。
-职责保持不变：State 修改 value 并发信号，显示脚本连接按钮和更新标签。
+职责保持不变：State 修改 value 并发信号，显示脚本连接按钮和更新标签。保存后选回本章 `chapter.tscn`，再点 **Run Current Scene** 验证两个实例。
 
 自检：改一次 Counter 源场景后 A、B 都有新按钮，但操作 A 仍不会改变 B；返回目录再进入不残留旧计数。
 

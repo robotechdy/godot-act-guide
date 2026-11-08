@@ -82,5 +82,5 @@ text = ""
 layout_mode = 2
 text = "Start with the engine model, then build toward 3D action games.
 Course plan: index.md | Chapters 01-02 are runnable; 03-24 are planned.
-Each chapter also runs independently with F6 in the editor."
+To run a chapter alone, select its chapter.tscn tab in the editor and click Run Current Scene."
 autowrap_mode = 3

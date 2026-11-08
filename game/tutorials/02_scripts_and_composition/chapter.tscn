@@ -68,6 +68,7 @@ autowrap_mode = 3
 
 [node name="Hint" type="Label" parent="Margin/Rows"]
 layout_mode = 2
-text = "Open counter.tscn: PanelContainer uses counter.gd; State uses counter_state.gd.
-This demonstrates composition, not a rule that every class must be a Node. Read the chapter's README."
+text = "In Scene > Local, inspect counter.tscn: the root uses counter.gd; State uses counter_state.gd.
+Scene > Remote shows the running A/B instances. To run this chapter again, select its chapter.tscn tab first.
+This demonstrates composition; not every class needs a Node. Read the chapter README for the exercise."
 autowrap_mode = 3

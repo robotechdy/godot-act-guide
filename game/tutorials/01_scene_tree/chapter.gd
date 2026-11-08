@@ -71,7 +71,7 @@ func refresh() -> void:
 	var current := get_tree().current_scene
 	var current_name := str(current.name) if current != null else "(test harness)"
 	status.text = "%s
-Current scene: %s | Actors in tree: %d | Detached: %s" % [last_action, current_name, instances.get_child_count(), str(is_instance_valid(detached))]
+Runtime current_scene: %s | Actors in tree: %d | Detached: %s" % [last_action, current_name, instances.get_child_count(), str(is_instance_valid(detached))]
 	var rows := PackedStringArray(["Active subtree: %s" % instances.get_path(), ""])
 	append_node(instances, 0, rows)
 	if is_instance_valid(detached):

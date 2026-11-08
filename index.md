@@ -5,6 +5,9 @@
 
 **当前状态：01、02 已有起始示例；03–24 是课程计划，尚未实现。** 后续章节按学习反馈推进，不一次生成整套游戏。
 
+运行按钮、Scene Layout 的界面分工及本机快捷键见 [项目操作说明](README.md#从编辑器运行与观察)。
+下面的对象模型是引擎机制，不取决于是否启用该布局插件。
+
 ## 先建立准确的心智模型
 
 ```text
@@ -47,7 +50,7 @@ Object
 
 | 章 | 核心问题与知识迁移 | 实验 / 预期产出 | 状态 |
 | --- | --- | --- | --- |
-| [01 场景树与实例生命周期](game/tutorials/01_scene_tree/README.md) | 磁盘上的 PackedScene、已实例化但未入树的 Node、运行中的 SceneTree 有何区别？`remove_child` 和 `queue_free` 有何不同？ | 创建同一场景的多个实例；移出后重新加入，观察身份与回调次数；比较 F5/F6 的树路径 | 起始示例可运行 |
+| [01 场景树与实例生命周期](game/tutorials/01_scene_tree/README.md) | 磁盘上的 PackedScene、已实例化但未入树的 Node、运行中的 SceneTree 有何区别？`remove_child` 和 `queue_free` 有何不同？ | 创建同一场景的多个实例；移出后重新加入，观察身份与回调次数；比较 Run Project 与 Run Current Scene 的运行树路径 | 起始示例可运行 |
 | [02 脚本、继承与组合](game/tutorials/02_scripts_and_composition/README.md) | 脚本资源与实例状态如何分开？为什么不能照搬同一 GameObject 挂多个 MonoBehaviour？ | 两个计数器复用同一场景和脚本，独立持有状态；用子节点与信号连接逻辑和显示 | 起始示例可运行 |
 | 03 Resource 与对象身份 | `Object → RefCounted → Resource` 的职责；`.tres`、内嵌资源、加载缓存与引用计数；Unity ScriptableObject 经验的适用边界 | 两个对象引用同一份配置，对比共享修改、复制与 `resource_local_to_scene` | 待实现 |
 | 04 场景序列化与组织 | `parent` / `owner`、存储属性、`PackedScene.pack()`、嵌套场景、继承场景与属性覆盖 | 运行时创建子节点，分别设定 owner 后打包并重载；检查哪些状态被保存 | 待实现 |
@@ -70,7 +73,7 @@ Object
 
 | 章 | 核心问题与知识迁移 | 实验 / 预期产出 | 状态 |
 | --- | --- | --- | --- |
-| 09 调试与观察 | Local / Remote、Inspector、断点、调用栈、错误面板、F5 / F6；哪些修改只影响运行实例 | 从一个生命周期或信号错误定位到具体 Node；保存前后检查磁盘差异 | 待实现 |
+| 09 调试与观察 | 当前编辑场景与共享 Script/Game 视图、Local / Remote、Inspector、断点与调用栈；Run Project / Run Current Scene 的区别；哪些修改只影响运行实例 | 从一个生命周期或信号错误定位到具体 Node；保存前后检查磁盘差异 | 待实现 |
 | 10 资源导入与版本管理 | `res://` / `user://`、UID、导入设置、缓存、外部资源引用；迁移 Unity meta 与 Library 的经验 | 导入一个小型 glTF，修改导入配置，清除可重建缓存后检查引用；记录资源来源 | 待实现 |
 | 11 编辑器脚本与可见演示 | `@tool` 的执行边界、Inspector 导出属性；可选 MCP 的项目/session 选择 | 用练习副本演示编辑节点和保存，学习者可以按人工步骤复现；不把运行重置当作文件回滚 | 待实现 |
 | 12 UI 与项目状态 | Control、Container、锚点、Theme、Focus、CanvasLayer；Autoload 的用途和边界 | 一个分辨率适配的菜单与暂停界面；区分局部关卡状态和跨场景状态 | 待实现 |
@@ -110,7 +113,7 @@ MCP 作为可选演示方式接入，尚未安装。需要时用 `godot-mcp-setu
 ## 每章怎样学习与验收
 
 1. 先提出一个需要校准的 Unity 经验，再给出 Godot 的对象或数据关系。
-2. 打开本章场景，检查 Scene/Inspector/脚本；用 F6 独立运行，按 README 操作并观察结果。
+2. 打开并选中本章 `chapter.tscn`，分别检查 Local 场景树、Inspector 与相关脚本文档；点 Run Current Scene 独立运行，按 README 操作，在 Remote 中观察运行对象。
 3. 对照代码解释机制，完成一个小改动，再尝试预测运行结果。
 4. 明确哪些是引擎行为、哪些是本项目的设计选择，记录当前版本和未验证事项。
 
